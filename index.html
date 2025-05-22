@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Cisco IOS XE Copilot on Catalyst 9000 Switching</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Copilot";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Cisco IOS XE Copilot on Catalyst 9000 Switching
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Copilot</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#demo">Demo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contact">Contact</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="prerequisites/">Prerequisites</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Cisco IOS XE Copilot on Catalyst 9000 Switching</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Copilot</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="aixedge">AIXEdge</h1>
+<p>In the dynamic landscape of network infrastructure, where agility and responsiveness are paramount, Cisco introduces  AIXEdge revolutionary addition to the IOS XE / NX-OS platforms. AIXEdge is engineered to redefine the way network administrators interact with and manage Cisco IOS XE / NX-OS based devices. By combining cutting-edge technologies, AI-XEdge promises to provide helpful assitance during the configuration of device and not only!</p>
+<h2 id="demo">Demo</h2>
+<p>This demonstration showcases the powerful capabilities and diverse possibilities of using AIXEdge on IOS XE &amp; NX-OS. It illustrates how AIXEdge enhances user interaction with IOS XE by providing intelligent guidance, multilingual support, and an interactive approach to querying and configuring devices.</p>
+<ul>
+<li>🔧 <strong>Configuration Assistance</strong>: Users can query the large language model (LLM) for step-by-step guidance on configuring various features and settings on an IOS XE device.</li>
+<li>🌍 <strong>Multilingual Support</strong>: AIXEdge enables users to receive configuration instructions and troubleshooting assistance in different languages, making it more accessible for global teams.</li>
+<li>💬 <strong>Interactive Conversational Interface</strong>: Instead of relying solely on traditional commands, users can engage in a dynamic conversation with their IOS XE device, asking questions and receiving contextual responses to streamline configuration and troubleshooting.</li>
+</ul>
+<p>📺 <a href="https://app.vidcast.io/share/3529e5ab-9557-4a68-b015-de4d85ba0b33">Video Demo</a> in Vidcast</p>
+<h2 id="commands">Commands</h2>
+<ul>
+<li><code>aixedge &lt;query&gt;</code> - Queries adressed to AI Assistant</li>
+<li><code>aixedge &lt;show command&gt; @ &lt;query to AI assistant&gt;</code> - AI Assistant helps with command's output</li>
+<li><code>aixedge-optics &lt;query&gt;</code> - Queries AI Assistant regarding optics &amp; compatibility</li>
+<li><code>aixedge-feature &lt;query&gt;</code> - Queries AI Assistant regarding compatibility between features and platform</li>
+<li><code>aixedge-upgrade</code> - Upgrades the AI Assistant;</li>
+<li><code>aixedge-cfg &lt;API_KEY&gt;</code> - Initialization of AI assistant</li>
+<li><code>aixedge-init</code> - Initialization of AI assistant</li>
+<li><code>aixedge-version</code> - Shows the current software version</li>
+<li><code>aixedge-uninstall</code> - Remove AIXEdge (config etc.)</li>
+</ul>
+<h2 id="contact">Contact</h2>
+<p>Contact <a href="mailto:scozma@cisco.com">Serban Cozma</a>, <a href="mailto:rcsapo@cisco.com">Robert Csapo</a>.</p>
+<p>Made with ❤️</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="prerequisites/" class="btn btn-neutral float-right" title="Prerequisites">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="prerequisites/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="js/smartlook.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2025-05-22 12:41:37.959448+00:00
+-->

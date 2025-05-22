@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Setup - Cisco IOS XE Copilot on Catalyst 9000 Switching</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setup";
+        var mkdocs_page_input_path = "setup.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cisco IOS XE Copilot on Catalyst 9000 Switching
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Copilot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prerequisites/">Prerequisites</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#here-is-a-step-by-step-guide">Here is a step-by-step guide:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#manual-proxy-settings">Manual proxy settings</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cisco IOS XE Copilot on Catalyst 9000 Switching</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Setup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="how-to-install">How to install</h1>
+<h2 id="setup">Setup</h2>
+<h3 id="here-is-a-step-by-step-guide">Here is a step-by-step guide:</h3>
+<p><strong>(Optional) Set Proxy</strong></p>
+<pre><code>Switch(config)#ip http client proxy-server &lt;IP/FQDN&gt; proxy-port &lt;PORT&gt;
+</code></pre>
+<blockquote>
+<p>Proxy Example</p>
+</blockquote>
+<pre><code>Switch(config)#ip http client proxy-server proxy.esl.cisco.com proxy-port 80
+</code></pre>
+<ul>
+<li><strong>Copy the following config into the running configuration of the device</strong></li>
+</ul>
+<pre><code>Switch#copy http://bootstrap.cisco-aixedge.com/aixedge-init.cfg running-config
+</code></pre>
+<ul>
+<li><strong>Initialize network configuration</strong></li>
+</ul>
+<pre><code>Switch#aixedge-init &lt;VLAN_ID&gt; &lt;trunk/access&gt; &lt;static/dhcp&gt; &lt;ip address&gt; &lt;netmask&gt; &lt;gateway&gt; &lt;dns&gt;
+</code></pre>
+<blockquote>
+<p>Static IP example</p>
+</blockquote>
+<pre><code>  SW#aixedge-init 1025 trunk static 192.168.1.2 255.255.255.0 192.168.1.1 192.168.1.254
+
+</code></pre>
+<blockquote>
+<p>DHCP example</p>
+</blockquote>
+<pre><code>  SW#aixedge-init 1025 trunk dhcp
+
+</code></pre>
+<ul>
+<li><strong>When you see the following syslog prompt the AIXEdge is ready</strong></li>
+</ul>
+<pre><code>*Dec 7 21:54:31.275:%HA_EM-6-LOG: aixedge-init-cloud: AIXEdge: Enabled. To start type 'aixedge-help'
+</code></pre>
+<ul>
+<li><strong>Be sure to see how to use the aixedge</strong></li>
+</ul>
+<pre><code>SW#aixedge-help
+
+AI assitant for Cisco AIXEdge products.
+        Arguments:
+        aixedge-help                                                                    Presents options to run AI assistant
+        aixedge &lt;query&gt;                                                                 Queries adressed to AI Assistant
+        aixedge &lt;show command&gt; @ &lt;query to AI assistant&gt;                                AI Assistant helps with command's output
+        aixedge-upgrade                                                                 Upgrades the AI Assistant to the latest version
+        aixedge-cfg &lt;API_KEY&gt;                                                           Initial config of the script; Adds the OpenAI API key;
+        aixedge-init                                                                    Initialization of AI assistant
+        aixedge-uninstall                                                               Uninstall the AI assistant
+        aixedge-version                                                                 Shows installed version
+
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<ul>
+<li>Enter the API key provided by us</li>
+</ul>
+<pre><code>Switch#aixedge-cfg &lt;API_KEY&gt;
+</code></pre>
+<h2 id="usage">Usage</h2>
+<ul>
+<li>Start using the aixedge (simple request)</li>
+</ul>
+<pre><code>Switch#aixedge who are you
+</code></pre>
+<ul>
+<li>Start using the aixedge (output interpretation)</li>
+</ul>
+<pre><code>Switch#aixedge show ip interface brief @ which interfaces are up
+</code></pre>
+<ul>
+<li>Enjoy! 😆</li>
+</ul>
+<h2 id="manual-proxy-settings">Manual proxy settings</h2>
+<blockquote>
+<p>In case you need to change the proxy for your switch make sure to adjust the settings for AIXEdge! 😉
+</p>
+</blockquote>
+<pre><code>Switch(config)#ip http client proxy-server A.B.C.D proxy-port E
+Switch(config)#end
+Switch#aixedge-proxy
+.....
+or
+.....
+Switch(config)#no ip http client proxy-server A.B.C.D proxy-port E
+Switch(config)#end
+Switch#aixedge-proxy
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../prerequisites/" class="btn btn-neutral float-left" title="Prerequisites"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../prerequisites/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../js/smartlook.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
